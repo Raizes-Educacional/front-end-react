@@ -14,7 +14,7 @@ export const ContainerFlex = styledComponents.div`
     background: #fff;
     max-width: 100%;
     padding: 40px;
-    height: 70vh;
+    min-height: 70vh;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     align-items: center;
