@@ -1,6 +1,9 @@
 import { React, useState } from "react";
-//Components
+// Components
+import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+import logotipo from "../../assets/logotipo.png";
 import Button from "../../components/button/index.jsx";
 // Styles
 import {
@@ -9,9 +12,8 @@ import {
   InputFormLogin,
   Logotipo,
 } from "./styles.js";
+
 // IMGS
-import { Form } from "react-bootstrap";
-import logotipo from "../../assets/logotipo.png";
 
 export default function Login() {
   const [validated, setValidated] = useState(false);
@@ -27,20 +29,21 @@ export default function Login() {
   return (
     <Container>
       <ContainerFlex>
-        <Logotipo src={logotipo} alt="Raizes"></Logotipo>
+        <Logotipo src={logotipo} alt="Raizes" />
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-          <Form.Group  md="4" controlId="validationCustom01">
+          <Form.Group md="4" controlId="validationCustom01">
             <Form.Control
               required
               type="email"
               placeholder="Email"
-              className ="form-control-input"
+              className="form-control-input"
             />
+
             <Form.Control.Feedback type="invalid">
               Email invalid.
             </Form.Control.Feedback>
           </Form.Group>
-           <Form.Group  md="4" controlId="validationCustom01">
+          <Form.Group md="4" controlId="validationCustom01">
             <Form.Control
               required
               type="password"
@@ -51,7 +54,7 @@ export default function Login() {
               Please choose a username.
             </Form.Control.Feedback>
           </Form.Group>
-          
+
           <p className="text-center">
             {" "}
             Esqueceu a senha? <Link to=""> Clique aqui</Link>

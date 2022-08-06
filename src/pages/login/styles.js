@@ -8,7 +8,7 @@ export const Container = styledComponents.section`
         justify-content: center;
         align-items: center;
     }
-   
+
 `;
 export const ContainerFlex = styledComponents.div`
     background: #fff;
@@ -66,4 +66,4 @@ export const Logotipo = styledComponents.img`
         height: none;
         width: 100%;
     }
-`
+`;
