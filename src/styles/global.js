@@ -27,6 +27,13 @@ export const Global = createGlobalStyle`
 .text-center{
     text-align: center;
 }
+.toast-alert{
+    position: fixed;
+    top: 0;
+    right: 10px;
+    z-index: 10;
+
+}
 
 `;
 export default Global;

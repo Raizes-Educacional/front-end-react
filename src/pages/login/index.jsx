@@ -1,15 +1,22 @@
 import { React, useState, useContext } from "react";
-import { Form } from "react-bootstrap";
+import { Form  } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
+
+//Componentes
+import Button from "../../components/button/index";
+import ToastMy from "../../components/Toast";
 
 // STYLES
 import { Container, ContainerFlex, Logotipo } from "./styles";
 
 // IMGS
 import logotipo from "../../assets/logotipo.png";
-import Button from "../../components/button/index";
+
+
 // Authetication 
 import { AuthContext } from "../../store/provider/AuthContext";
+
+
 export default function Login() {
   const { user, setUser } = useContext(AuthContext)
   const [validated, setValidated] = useState(false);
@@ -64,6 +71,7 @@ export default function Login() {
     }
 
   };
+  // Chech if user login
   if(userok === true){
     return (
       <Navigate to="/admin" />
@@ -71,6 +79,8 @@ export default function Login() {
   }else{
     return (
       <Container>
+        <ToastMy></ToastMy>
+      
         <ContainerFlex>
           <Logotipo src={logotipo} alt="Raizes" />
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
