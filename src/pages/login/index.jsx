@@ -23,6 +23,7 @@ export default function Login() {
   //     redirecting the page
   //===================================================================
   const handleSubmit = (event) => {
+    setValidated(true);
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
@@ -45,12 +46,16 @@ export default function Login() {
 
       fetch("http://localhost:3000/voluntario/login", requestOptions)
         .then((response) => response.json())
-        .then((result) => {
+        .then( async (result) => {
           if(result.statusCode === 200){
             // set result to context and localhost
-            setUser(result);
-            setUserOk(true);
-            return window.localStorage.setItem('acess-token', result);
+            console.log("Parte 1");
+            await window.localStorage.setItem('acess-token', result);
+            console.log("Parte 2");
+            await setUser(result);
+            console.log("Parte 3");
+            return await setUserOk(true);
+
 
           }
           return console.log("Erro "+ result.mensage)
@@ -58,7 +63,6 @@ export default function Login() {
         .catch((error) => console.log("error", error));
     }
 
-    setValidated(true);
   };
   if(userok === true){
     return (
