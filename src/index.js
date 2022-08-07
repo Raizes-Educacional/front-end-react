@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// eslint-disable-next-line import/extensions
 import App from "./App";
+import { AuthProvider } from "./store/provider/AuthContext";
 import Global from "./styles/global";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Global/>
-    <App />
+    <AuthProvider>
+      <App />
+    </AuthProvider>
   </React.StrictMode>
 );
 

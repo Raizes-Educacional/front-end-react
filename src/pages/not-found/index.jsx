@@ -1,11 +1,13 @@
-import { React } from "react";
+/* eslint-disable no-unused-vars */
+import React from "react";
 
 // Imgs
 import RaizesLogo from "../../assets/logotipo.png";
 // css
-import { Container, LogoRaizes, FlexContainer } from "./styled.js";
-
-export default function notFound() {
+import { Container, LogoRaizes, FlexContainer } from "./styled";
+//
+import { AuthContext } from "../../store/provider/AuthContext";
+export default function NotFound() {
   return (
     <Container>
       <FlexContainer>
