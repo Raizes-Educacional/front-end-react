@@ -106,7 +106,7 @@ export default function Login() {
                 Email invalid.
               </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group md="4" controlId="validationCustom01">
+            <Form.Group md="4" controlId="validationCustom02">
               {
                 //===================================================================
                 //                  INPUT PASSWORD
@@ -118,6 +118,8 @@ export default function Login() {
                 placeholder="password"
                 className="form-control-input"
                 onChange={(event) => setPassword(event.target.value)}
+                autoComplete="on"
+                
               />
               <Form.Control.Feedback type="invalid">
                 Please choose a username.
