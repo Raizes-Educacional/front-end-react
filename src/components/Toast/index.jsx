@@ -3,7 +3,10 @@ import { Toast, ToastContainer } from "react-bootstrap";
 
 function ToastMy() {
     const [showA, setShowA] = useState(true);
-    const toggleShowA = () => setShowA(!showA);
+    const toggleShowA = () => {
+       setShowA(!showA);
+       window.location.reload()
+    }
   return (
     <Toast show={showA}  
         onClose={toggleShowA}

@@ -14,11 +14,11 @@ export function Router() {
       <Routes>
         <Route  path="/" element={<NotAuthetication />}>
           <Route path="/login" exact element={<Login />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route element={<RequiredAuthetication />}>
           <Route exact path="/admin" element={<AdminHome/>} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

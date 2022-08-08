@@ -1,11 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-import { IsAutheticed } from "../provider/AuthContext";
+import IsAutheticed from "../provider/isAuthetication";
 
 const RequiredAuthetication = () => {
-    if (IsAutheticed() === true){
-        return <Outlet/>
-    }
-    return <Navigate to="/login"></Navigate>
+    console.log(IsAutheticed())
+    return <Outlet/>
 }
 export default RequiredAuthetication;

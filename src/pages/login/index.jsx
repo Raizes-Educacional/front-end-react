@@ -23,6 +23,7 @@ export default function Login() {
   const [userok, setUserOk] = useState(false);
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+  const [validPassword, setValidPassword] = useState(false);
 
   //===================================================================
   //     Makes connection with api,
@@ -56,18 +57,17 @@ export default function Login() {
         .then( async (result) => {
           if(result.statusCode === 200){
             // set result to context and localhost
-            console.log("Parte 1");
             await window.localStorage.setItem('acess-token', result);
-            console.log("Parte 2");
             await setUser(result);
-            console.log("Parte 3");
-            return await setUserOk(true);
-
-
+            return setUserOk(true);
           }
+          setValidPassword(true)
           return console.log("Erro "+ result.mensage)
         })
-        .catch((error) => console.log("error", error));
+        .catch((error) => {
+          setValidPassword(true);
+          console.log("error", error)
+        });
     }
 
   };
@@ -79,7 +79,12 @@ export default function Login() {
   }else{
     return (
       <Container>
-        <ToastMy></ToastMy>
+        {validPassword === true && 
+          (
+            <ToastMy ></ToastMy>
+          )
+
+          }
       
         <ContainerFlex>
           <Logotipo src={logotipo} alt="Raizes" />
