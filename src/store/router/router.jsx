@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // pages
-import Login from "../../pages/Login/index";
+import Login from "../../pages/login/index";
 import NotFound from "../../pages/NotFound/index";
-import AdminHome from "../../pages/AdminHome";
-import FomrEnrrolment from '../../pages/FormEnrollment/index.jsx';
+import AdminHome from "../../pages/AdminHome/index";
+import FomrEnrrolment from '../../pages/FormEnrollment/index';
 // Authetication to routes 
 import NotAuthetication from "./notAuthetication";
 import RequiredAuthetication from "./requeridAuthetication";

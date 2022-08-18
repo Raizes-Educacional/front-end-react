@@ -3,7 +3,7 @@ import { Form  } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 
 //Componentes
-import Button from "../../components/Button/index";
+import Button from "../../components/button/index";
 import ToastMy from "../../components/Toast";
 
 // STYLES
