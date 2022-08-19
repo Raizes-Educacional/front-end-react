@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react'
 
 //Context
-import { FormStepsContext } from '../../../store/provider/ContextFormEnrollment/ContextFormEnrollment';
+import { FormStepsContext } from '../../store/provider/ContextFormEnrollment/ContextFormEnrollment';
 //Style-components
-import StepThreeForm from '../StepThreeForm';
+import StepThreeForm from './StepThreeForm/index';
 
-export default function StepTwoForm({step}) {
+export default function RenderStep({step}){
   const {formStepConfig, setFormStepConfig} = useContext(FormStepsContext)
   const [test, setTest] = useState();
 

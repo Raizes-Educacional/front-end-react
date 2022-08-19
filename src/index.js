@@ -3,15 +3,18 @@ import ReactDOM from "react-dom/client";
 
 import App from "./App";
 import { AuthProvider } from "./store/provider/AuthContext";
+import { ProviderFormSteps } from "./store/provider/ContextFormEnrollment/ContextFormEnrollment";
 import Global from "./styles/global";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Global/>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <ProviderFormSteps>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </ProviderFormSteps>
   </React.StrictMode>
 );
 
