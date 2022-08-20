@@ -12,7 +12,7 @@ export default function RenderStep({step}){
   const [test, setTest] = useState();
   if( step === 0) return <StepOneForm />
     
-  else if(step === 1) return <StepTwoForm/>
+  else if(step === 1) return <StepTwoForm  />
       
   else if(step === 2) return <StepThreeForm/>
 

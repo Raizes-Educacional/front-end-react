@@ -19,6 +19,8 @@ function FormEnrollmentComponents() {
   const [validated, setValidated] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
+  const [isButtonTrue, setIsButtonTrue ] = useState(false);
+  const [formIsValid, setFormIsValid] = useState(false)
   const steps = getSteps();
 
   const isStepSkipped = (step) => {
@@ -45,6 +47,7 @@ function FormEnrollmentComponents() {
     event.preventDefault();
     event.stopPropagation();
     if (form.checkValidity() === true) {
+        setFormIsValid(true)
         handleNext()
     }
 
@@ -70,7 +73,7 @@ function FormEnrollmentComponents() {
       <div>
           
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-          <RenderStep step={activeStep} />
+          <RenderStep step={activeStep} FormIsValid={formIsValid} />
           <S.WrapeerCenter>
             <Button
               disabled={activeStep === 0}

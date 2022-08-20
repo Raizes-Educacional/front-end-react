@@ -11,11 +11,11 @@ import * as S from "./styled";
 
 export default function StepThreeForm() {
   const { formStepConfig, setFormStepConfig } = useContext(FormStepsContext);
-  const [inputRg, setInputRg] = useState();
-  const [inputName, setInputName] = useState();
-  const [inputFileRg, setInputFileRg] = useState();
-  const [inputNumberPhone, setInputNumberPhone] = useState();
-  const [inputEmail, setInputEmail] = useState();
+  const [inputRg, setInputRg] = useState('');
+  const [inputName, setInputName] = useState('');
+  const [inputFileRg, setInputFileRg] = useState('');
+  const [inputNumberPhone, setInputNumberPhone] = useState('');
+  const [inputEmail, setInputEmail] = useState('');
   const [inputResponsibilityStudentEtec, setInputResponsibilityStudentEtec] =
     useState();
   const [inputResponsiblePathStudentEtec, setInputResponsiblePathStudentEtec] =
