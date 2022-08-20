@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
@@ -16,8 +16,9 @@ const getSteps = () => ["Início", "Aluno", "Responsável"];
 
 function FormEnrollmentComponents() {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  const [validated, setValidated] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+  const [skipped, setSkipped] = useState(new Set());
   const steps = getSteps();
 
   const isStepSkipped = (step) => {
@@ -30,7 +31,6 @@ function FormEnrollmentComponents() {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
@@ -39,10 +39,17 @@ function FormEnrollmentComponents() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+ 
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    event.stopPropagation();
+    if (form.checkValidity() === true) {
+        handleNext()
+    }
 
+    setValidated(true);
+  };
   return (
     <div className={classes.root}>
       <Stepper activeStep={activeStep}>
@@ -61,7 +68,8 @@ function FormEnrollmentComponents() {
         })}
       </Stepper>
       <div>
-        <Form>
+          
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <RenderStep step={activeStep} />
           <S.WrapeerCenter>
             <Button
@@ -75,8 +83,9 @@ function FormEnrollmentComponents() {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleNext}
+              type="submit"
               className={classes.button}
+              
             >
               {activeStep === steps.length - 1 ? "Cadastrar" : "Continuar"}
             </Button>

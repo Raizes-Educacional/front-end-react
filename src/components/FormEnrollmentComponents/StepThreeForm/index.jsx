@@ -4,6 +4,6 @@ import { FormStepsContext } from '../../../store/provider/ContextFormEnrollment/
 export default function StepThreeForm() {
     const {formStepConfig, setFormStepConfig} = useContext(FormStepsContext)
     return(
-        <h1> therre: {formStepConfig.usename} </h1>    
+        <h1> therre:  </h1>    
     )
 }
