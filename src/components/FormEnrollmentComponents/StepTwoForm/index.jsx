@@ -19,6 +19,7 @@ export default function StepTwoForm({ step }) {
   const [inputDistrict, setInputDistrict] = useState();
   const [inputComplement, setInputComplement] = useState();
   const [inputShool, setInputShool] = useState();
+  const [inputEmail, setInputEmail] = useState();
   const [inputChooseTheSeries, setInputChooseTheSeries] = useState();
   const [inputKnowingRaizes, setInputKnowingRaizes] = useState();
   const [inputRemoteClassroom, setInputRemoteClassroom] = useState();
@@ -29,7 +30,7 @@ export default function StepTwoForm({ step }) {
         {/*========================================================
                      NAME
         ===========================================================*/}
-        <Form.Group as={Col} md="4" controlId="validationCustom01">
+        <Form.Group as={Col} md="3" controlId="validationCustom01">
           <Form.Label>Nome completo</Form.Label>
           <Form.Control
             required
@@ -49,7 +50,7 @@ export default function StepTwoForm({ step }) {
         {/*==========================================================
                             AGE         
         =============================================================*/}
-        <Form.Group as={Col} md="4" controlId="validationCustom02">
+        <Form.Group as={Col} md="3" controlId="validationCustom02">
           <Form.Label>Idade</Form.Label>
           <Form.Control
             required
@@ -68,12 +69,12 @@ export default function StepTwoForm({ step }) {
         {/*================================================================
                             PHONE
          =================================================================*/}
-        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+        <Form.Group as={Col} md="3" controlId="validationCustomUsername">
           <Form.Label>Celular</Form.Label>
           <InputGroup hasValidation>
             <Form.Control
               type="text"
-              placeholder="Prencha com seu número de celular"
+              placeholder="Núemro do celular do aluno"
               aria-describedby="inputGroupPrepend"
               required
               minLength="14"
@@ -88,6 +89,24 @@ export default function StepTwoForm({ step }) {
               Por favor, fale-me seu número de celular.
             </Form.Control.Feedback>
           </InputGroup>
+        </Form.Group>
+        {/*========================================================================
+                                  email
+        ============================================================================*/}
+        <Form.Group as={Col} md="3" controlId="validationCustom04">
+          <Form.Label>E-mail do Aluno</Form.Label>
+          <Form.Control
+            required
+            type="email"
+            placeholder="Digite o email do aluno"
+            maxLength={50}
+            onChange={(e) => setInputEmail(e.target.value)}
+            value={inputEmail}
+          />
+          <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Por favor, prencha esse campo
+          </Form.Control.Feedback>
         </Form.Group>
       </Row>
       <Row className="mb-3">
