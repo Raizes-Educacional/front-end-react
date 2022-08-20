@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Col, Form, Row, InputGroup } from "react-bootstrap";
 //Maks
 import { phoneMaks } from "../../Maks/phoneMaks";
@@ -8,7 +8,7 @@ import { ageMaks } from "../../Maks/ageMaks";
 import { FormStepsContext } from "../../../store/provider/ContextFormEnrollment/ContextFormEnrollment";
 //Styled component
 import * as S from "./styled";
-export default function StepTwoForm() {
+export default function StepTwoForm({setDice}) {
   const { formStepConfig, setFormStepConfig } = useContext(FormStepsContext);
   const [inputName, setInputName] = useState('');
   const [inputAge, setInputAge] = useState('');
@@ -24,6 +24,27 @@ export default function StepTwoForm() {
   const [inputKnowingRaizes, setInputKnowingRaizes] = useState('');
   const [inputRemoteClassroom, setInputRemoteClassroom] = useState('');
   const [inputOpenHoursSaturday, setInputOpenHoursSaturday] = useState('');
+
+  useEffect(()=> {
+    setDice({ student: {
+      name: inputName,
+      age: inputAge,
+      phone: inputPhone,
+      cep: inputCep,
+      address: inputAddress,
+      city: inputCity,
+      district: inputDistrict,
+      complement: inputComplement,
+      shool: inputShool,
+      email: inputEmail,
+      chooseTheSeries: inputChooseTheSeries,
+      knowingRaizes: inputKnowingRaizes,
+      remoteClassroom: inputRemoteClassroom,
+      openHoursSaturday: inputOpenHoursSaturday
+
+    }})
+  }, [inputName, inputAge, inputPhone, inputCep, inputAddress, inputCity, inputDistrict, 
+    inputComplement, inputShool, inputEmail, inputChooseTheSeries, inputKnowingRaizes, inputRemoteClassroom, inputOpenHoursSaturday ])
   return (
     <S.Container>
       <Row className="mb-3">
@@ -276,7 +297,7 @@ export default function StepTwoForm() {
           <Form.Label>Se o início das aulas for à distância, o aluno terá condições de cursar?</Form.Label>
           <Form.Select
             aria-label="Default select example"
-            onChange={(e) => setInputRemoteClassroom(e.target.value)}
+            onChange={(e) => {setInputRemoteClassroom(e.target.value)}}
             required
           >
             <option value="Sim">Sim</option>

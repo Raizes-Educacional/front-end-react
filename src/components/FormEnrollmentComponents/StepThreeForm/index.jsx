@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Form, Row, Col, InputGroup } from "react-bootstrap";
 //Maks
 import { rgMaks } from "../../Maks/rgMaks";
@@ -9,7 +9,7 @@ import { FormStepsContext } from "../../../store/provider/ContextFormEnrollment/
 //Styled-components
 import * as S from "./styled";
 
-export default function StepThreeForm() {
+export default function StepThreeForm({setDice}) {
   const { formStepConfig, setFormStepConfig } = useContext(FormStepsContext);
   const [inputRg, setInputRg] = useState('');
   const [inputName, setInputName] = useState('');
@@ -20,6 +20,22 @@ export default function StepThreeForm() {
     useState();
   const [inputResponsiblePathStudentEtec, setInputResponsiblePathStudentEtec] =
     useState();
+    
+  useEffect(()=> {
+    setDice({
+      responsible: {
+        name: inputName,
+        rgNumber: inputRg,
+        fileRg: inputFileRg,
+        phoneNumber: inputNumberPhone,
+        email: inputEmail,
+        responsibilityStudentEtec: inputResponsibilityStudentEtec,
+        ResponsiblePathStudentEtec: inputResponsiblePathStudentEtec
+      }
+    })
+    
+  }, [inputName, inputRg, inputNumberPhone, inputFileRg, inputNumberPhone, inputEmail,
+    inputResponsibilityStudentEtec, inputResponsiblePathStudentEtec])
   return (
     <S.Container>
       <Row className="mb-3">
