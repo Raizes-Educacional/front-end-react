@@ -10,6 +10,10 @@ import { FormStepsContext } from "../../../store/provider/ContextFormEnrollment/
 import * as S from "./styled";
 export default function StepTwoForm({setDice}) {
   const { formStepConfig, setFormStepConfig } = useContext(FormStepsContext);
+
+  /*=======================================================================
+                          HOOKS GET FORM VALUES 
+  ========================================================================*/
   const [inputName, setInputName] = useState('');
   const [inputAge, setInputAge] = useState('');
   const [inputPhone, setInputPhone] = useState('');
@@ -24,9 +28,12 @@ export default function StepTwoForm({setDice}) {
   const [inputKnowingRaizes, setInputKnowingRaizes] = useState('');
   const [inputRemoteClassroom, setInputRemoteClassroom] = useState('');
   const [inputOpenHoursSaturday, setInputOpenHoursSaturday] = useState('');
-
+  /*=======================================================================
+                      GETTING VALUES FROM THE CONTEXT   
+  =========================================================================*/
+  const [valueName, setValueName ] = useState('')
   useEffect(()=> {
-    setDice({ student: {
+    setDice({
       name: inputName,
       age: inputAge,
       phone: inputPhone,
@@ -40,11 +47,14 @@ export default function StepTwoForm({setDice}) {
       chooseTheSeries: inputChooseTheSeries,
       knowingRaizes: inputKnowingRaizes,
       remoteClassroom: inputRemoteClassroom,
-      openHoursSaturday: inputOpenHoursSaturday
-
-    }})
+      openHoursSaturday: inputOpenHoursSaturday 
+    })
+    console.log(formStepConfig)
+ 
   }, [inputName, inputAge, inputPhone, inputCep, inputAddress, inputCity, inputDistrict, 
     inputComplement, inputShool, inputEmail, inputChooseTheSeries, inputKnowingRaizes, inputRemoteClassroom, inputOpenHoursSaturday ])
+  
+  
   return (
     <S.Container>
       <Row className="mb-3">
@@ -59,8 +69,9 @@ export default function StepTwoForm({setDice}) {
             placeholder="Digite o seu nome completo"
             minLength={10}
             maxLength={50}
+            value={valueName.length > 1 ? valueName : inputName}
             onChange={(e) => setInputName(e.target.value)}
-            value={inputName}
+       
           />
           <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">

@@ -17,13 +17,13 @@ export default function StepThreeForm({setDice}) {
   const [inputNumberPhone, setInputNumberPhone] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [inputResponsibilityStudentEtec, setInputResponsibilityStudentEtec] =
-    useState();
+    useState('');
   const [inputResponsiblePathStudentEtec, setInputResponsiblePathStudentEtec] =
-    useState();
+    useState('');
     
   useEffect(()=> {
-    setDice({
-      responsible: {
+    setDice(
+       {
         name: inputName,
         rgNumber: inputRg,
         fileRg: inputFileRg,
@@ -32,7 +32,7 @@ export default function StepThreeForm({setDice}) {
         responsibilityStudentEtec: inputResponsibilityStudentEtec,
         ResponsiblePathStudentEtec: inputResponsiblePathStudentEtec
       }
-    })
+    )
     
   }, [inputName, inputRg, inputNumberPhone, inputFileRg, inputNumberPhone, inputEmail,
     inputResponsibilityStudentEtec, inputResponsiblePathStudentEtec])
