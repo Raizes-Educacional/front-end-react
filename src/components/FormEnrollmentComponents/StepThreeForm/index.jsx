@@ -5,12 +5,10 @@ import { rgMaks } from "../../Maks/rgMaks";
 import { phoneMaks } from "../../Maks/phoneMaks";
 
 //Context
-import { FormStepsContext } from "../../../store/provider/ContextFormEnrollment/ContextFormEnrollment";
 //Styled-components
 import * as S from "./styled";
 
-export default function StepThreeForm({setDice}) {
-  const { formStepConfig, setFormStepConfig } = useContext(FormStepsContext);
+export default function StepThreeForm() {
   const [inputRg, setInputRg] = useState('');
   const [inputName, setInputName] = useState('');
   const [inputFileRg, setInputFileRg] = useState('');
@@ -22,7 +20,7 @@ export default function StepThreeForm({setDice}) {
     useState('');
     
   useEffect(()=> {
-    setDice(
+   /* (
        {
         name: inputName,
         rgNumber: inputRg,
@@ -33,7 +31,7 @@ export default function StepThreeForm({setDice}) {
         ResponsiblePathStudentEtec: inputResponsiblePathStudentEtec
       }
     )
-    
+    */
   }, [inputName, inputRg, inputNumberPhone, inputFileRg, inputNumberPhone, inputEmail,
     inputResponsibilityStudentEtec, inputResponsiblePathStudentEtec])
   return (
