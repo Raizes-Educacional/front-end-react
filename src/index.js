@@ -2,19 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import App from "./App";
+import Global from "./styles/global";
+
 import { AuthProvider } from "./store/provider/AuthContext";
 import { StudentProvider } from "./store/provider/FormEmrollment/studentContext";
-import Global from "./styles/global";
+import { ResposibleProvider } from "./store/provider/FormEmrollment/responsible";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Global />
-    <StudentProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </StudentProvider>
+    <ResposibleProvider>
+      <StudentProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </StudentProvider>
+    </ResposibleProvider>
   </React.StrictMode>
 );
 

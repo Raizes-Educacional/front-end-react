@@ -73,9 +73,7 @@ export default function StepTwoForm() {
     if (inputOpenHoursSaturday.length > 1) {
       setStudent({ ...student, openHoursSaturday: inputOpenHoursSaturday });
     }
-    /*=======================================================================
-                            treatment chooseTheSeries
-    =========================================================================*/
+  
     if (inputChooseTheSeries.length > 1) {
       setStudent({ ...student, chooseTheSeries: inputChooseTheSeries });
     }
@@ -386,9 +384,6 @@ export default function StepTwoForm() {
             <option value="Não">Não</option>
           </Form.Select>
 
-          <Form.Control.Feedback type="invalid">
-            Selecione a série
-          </Form.Control.Feedback>
         </Form.Group>
         {/*===================================================================
                          Open HoursSaturday

@@ -5,10 +5,12 @@ import { rgMaks } from "../../Maks/rgMaks";
 import { phoneMaks } from "../../Maks/phoneMaks";
 
 //Context
+import { ResponsibleContext } from "../../../store/provider/FormEmrollment/responsible";
 //Styled-components
 import * as S from "./styled";
 
 export default function StepThreeForm() {
+  const { responsible, setResponsible} = useContext(ResponsibleContext)
   const [inputRg, setInputRg] = useState('');
   const [inputName, setInputName] = useState('');
   const [inputFileRg, setInputFileRg] = useState('');
@@ -20,18 +22,27 @@ export default function StepThreeForm() {
     useState('');
     
   useEffect(()=> {
-   /* (
-       {
-        name: inputName,
-        rgNumber: inputRg,
-        fileRg: inputFileRg,
-        phoneNumber: inputNumberPhone,
-        email: inputEmail,
-        responsibilityStudentEtec: inputResponsibilityStudentEtec,
-        ResponsiblePathStudentEtec: inputResponsiblePathStudentEtec
+      if(inputName.length > 1){
+        setResponsible({...responsible, name: inputName})
       }
-    )
-    */
+      if(inputRg.length > 1){
+        setResponsible({...responsible, rgNumber: inputRg})
+      }
+      if(inputFileRg.length > 1){
+        setResponsible({...responsible, fileRg: inputFileRg})
+      }
+      if(inputNumberPhone.length > 1){
+        setResponsible({...responsible, phoneNumber: inputNumberPhone})
+      }
+      if(inputEmail.length > 1){
+        setResponsible({...responsible, email: inputEmail})
+      }
+      if(inputResponsibilityStudentEtec.length > 1){
+        setResponsible({...responsible, responsibilityStudentEtec: inputResponsibilityStudentEtec})
+      }if(inputResponsiblePathStudentEtec.length > 1){
+        setResponsible({...responsible, ResponsiblePathStudentEtec: inputResponsiblePathStudentEtec })
+      }
+
   }, [inputName, inputRg, inputNumberPhone, inputFileRg, inputNumberPhone, inputEmail,
     inputResponsibilityStudentEtec, inputResponsiblePathStudentEtec])
   return (
@@ -47,7 +58,7 @@ export default function StepThreeForm() {
             type="text"
             placeholder="Digite o nome do responsável"
             onChange={(e) => setInputName(e.target.value)}
-            value={inputName}
+            value={responsible.name.length < 1 ? inputName : responsible.name  }
             maxLength={50}
             minLength={5}
           />
@@ -65,7 +76,8 @@ export default function StepThreeForm() {
             type="text"
             placeholder="Digite o seu número de rg"
             onChange={(e) => setInputRg(rgMaks(e.target.value))}
-            value={inputRg}
+            value={responsible.rgNumber.length < 1 ? inputRg : responsible.rgNumber  }
+
             maxLength={12}
             minLength={12}
           />
@@ -101,7 +113,8 @@ export default function StepThreeForm() {
             type="text"
             placeholder="Digite o número do celular do responsável"
             onChange={(e) => setInputNumberPhone(phoneMaks(e.target.value))}
-            value={inputNumberPhone}
+            value={responsible.phoneNumber.length < 1 ? inputNumberPhone : responsible.phoneNumber }
+
             maxLength={14}
             minLength={14}
           />
@@ -120,9 +133,12 @@ export default function StepThreeForm() {
             placeholder="Digite o email do aluno"
             maxLength={50}
             onChange={(e) => setInputEmail(e.target.value)}
-            value={inputEmail}
+            value={responsible.email.length === 0 ? inputEmail : responsible.email }
+
           />
           <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
+
+
         </Form.Group>
       </Row>
       <Row className="">
@@ -141,6 +157,7 @@ export default function StepThreeForm() {
             }}
             required
           >
+            <option value={responsible.responsibilityStudentEtec}>{responsible.responsibilityStudentEtec}</option>
             <option value="true">Sim</option>
             <option value="false">Não</option>
           </Form.Select>
@@ -158,8 +175,9 @@ export default function StepThreeForm() {
             }}
             required
           >
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
+            <option value={responsible.ResponsiblePathStudentEtec}>{responsible.ResponsiblePathStudentEtec}</option>
+            <option value="sim">Sim</option>
+            <option value="não">Não</option>
           </Form.Select>
         </Form.Group>
       </Row>

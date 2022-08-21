@@ -1,7 +1,7 @@
 import React,{ useState }from "react";
 
 
-export const StudentContext = React.createContext({ student: {
+export const StudentContext = React.createContext( {
 
     name: ' ',
     age: '',
@@ -17,7 +17,7 @@ export const StudentContext = React.createContext({ student: {
     knowingRaizes: '',
     remoteClassroom: '',
     openHoursSaturday: ''
-}})
+})
 
 
 export const StudentProvider = (props) => {
