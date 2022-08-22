@@ -19,6 +19,6 @@ export default function RenderStep({step}){
       
   else if(step === 2) return <StepThreeForm />
 
-  else console(student, responsible)
+  else console.log(student, responsible)
 
 }

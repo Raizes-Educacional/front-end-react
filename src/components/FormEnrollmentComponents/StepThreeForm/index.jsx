@@ -164,8 +164,8 @@ export default function StepThreeForm() {
             required
           >
             <option value={inputResponsibilityStudentEtec}>{inputResponsibilityStudentEtec}</option>
-            <option value="true">Sim</option>
-            <option value="false">Não</option>
+            <option value="sim">Sim</option>
+            <option value="não">Não</option>
           </Form.Select>
         </Form.Group>
         {}

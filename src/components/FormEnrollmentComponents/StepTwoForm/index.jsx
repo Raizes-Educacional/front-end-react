@@ -36,11 +36,11 @@ export default function StepTwoForm() {
     I'm doing this so I don't pass the value of the input with the context,
     so the user can't delete or typee
     ==================================================================*/
-    if(student.name.length > 0) setInputName(student.name);
+   if(student.name.length > 0) setInputName(student.name);
     
     if(student.email.length > 0 ) setInputEmail(student.email);
 
-    if(student.age.length > 0) setInputAge(student.age.length);
+    if(student.age.length > 0) setInputAge(student.age);
 
     if(student.phone.length > 0) setInputPhone(student.phone);
 
@@ -62,59 +62,62 @@ export default function StepTwoForm() {
  
     if(student.remoteClassroom.length > 0) setInputRemoteClassroom(student.remoteClassroom);
 
-    if(student.openHoursSaturday.length > 0) setInputOpenHoursSaturday(student.openHoursSaturda);
+    if(student.openHoursSaturday.length > 0) setInputOpenHoursSaturday(student.openHoursSaturday);
   }, [])
-  useEffect(() => {
+/*  useEffect(() => {
     /*===================================================================
         Checks if the user changed the field, if it changed, 
         it will set only the field that changed to the context, 
         thus avoiding touching other properties of the student object
     =====================================================================*/
-    if (inputName.length > 1) setStudent({ ...student, name: inputName });
   
-    if (inputAge.length > 1) setStudent({ ...student, age: inputAge });
-    
-    if (inputPhone.length > 1) setStudent({ ...student, phone: inputPhone });
-    
-    if (inputEmail.length > 1) setStudent({ ...student, email: inputEmail });
-    
-    if (inputCep.length > 1) setStudent({ ...student, cep: inputCep });
-    
-    if (inputAddress.length > 1) setStudent({ ...student, address: inputAddress });
-    
-    if (inputDistrict.length > 1) setStudent({ ...student, district: inputDistrict });
-    
-    if (inputCity.length > 1) setStudent({ ...student, city: inputCity });
-    
-    if (inputComplement.length > 1) setStudent({ ...student, complement: inputComplement });
-    
-    if (inputShool.length > 1) setStudent({ ...student, shool: inputShool });
-    
-    if (inputKnowingRaizes.length > 1) setStudent({ ...student, knowingRaizes: inputKnowingRaizes });
-    
-    if (inputRemoteClassroom.length > 1) setStudent({ ...student, remoteClassroom: inputRemoteClassroom });
-    
-    if (inputOpenHoursSaturday.length > 1) setStudent({ ...student, openHoursSaturday: inputOpenHoursSaturday });
-    
-    if (inputChooseTheSeries.length > 1) setStudent({ ...student, chooseTheSeries: inputChooseTheSeries });
-    
-  }, [
-    inputName,
-    inputAge,
-    inputPhone,
-    inputCep,
-    inputAddress,
-    inputCity,
-    inputDistrict,
-    inputComplement,
-    inputShool,
-    inputEmail,
-    inputChooseTheSeries,
-    inputKnowingRaizes,
-    inputRemoteClassroom,
-    inputOpenHoursSaturday,
-  ]);
 
+    
+
+
+/*  ]);*/
+  useEffect(() => {
+    setStudent({ ...student, name: inputName });
+  }, [inputName])
+  useEffect(() => {
+    setStudent({ ...student, age: inputAge })
+  }, [inputAge])
+  useEffect(() => {
+    setStudent({ ...student, phone: inputPhone });
+  }, [inputPhone])
+  useEffect(() => {
+    setStudent({ ...student, cep: inputCep });
+  }, [inputCep])
+  useEffect(() => {
+    setStudent({ ...student, address: inputAddress });
+  }, [inputAddress])
+  useEffect(() => {
+    setStudent({ ...student, city: inputCity });
+  }, [inputCity])
+  useEffect(() => {
+    setStudent({ ...student, district: inputDistrict });
+  }, [inputDistrict])
+  useEffect(() => {
+    setStudent({ ...student, complement: inputComplement });
+  }, [inputComplement])
+  useEffect(() => {
+    setStudent({ ...student, shool: inputShool });
+  }, [inputShool])
+  useEffect(() => {
+    setStudent({ ...student, email: inputEmail });
+  }, [inputEmail])
+  useEffect(() => {
+    setStudent({ ...student, chooseTheSeries: inputChooseTheSeries });
+  }, [inputChooseTheSeries])
+  useEffect(() => {
+    setStudent({ ...student, knowingRaizes: inputKnowingRaizes });
+  }, [inputKnowingRaizes])
+  useEffect(() => {
+    setStudent({ ...student, remoteClassroom: inputRemoteClassroom });
+  }, [inputRemoteClassroom])
+  useEffect(() => {
+    setStudent({ ...student, openHoursSaturday: inputOpenHoursSaturday });
+  }, [inputOpenHoursSaturday])
   return (
     <S.Container>
       <Row className="mb-3">
@@ -327,10 +330,7 @@ export default function StepTwoForm() {
             }}
             required
           >
-            <option value={inputChooseTheSeries}>
-              {" "}
-              {inputChooseTheSeries}
-            </option>
+            <option value={inputChooseTheSeries}>{inputChooseTheSeries}</option>
             <option value="5°ano">5°ano</option>
             <option value="6°ano">6°ano</option>
             <option value="7°ano">7°ano</option>
@@ -350,10 +350,7 @@ export default function StepTwoForm() {
             onChange={(e) => setInputKnowingRaizes(e.target.value)}
             required
           >
-            <option value={inputKnowingRaizes}>
-              {" "}
-              {inputKnowingRaizes}
-            </option>
+            <option value={inputKnowingRaizes}>{inputKnowingRaizes}</option>
             <option value="Grupo de Whatsapp">Grupo de Whatsapp</option>
             <option value="Divulgação em reunião escolar">
               Divulgação em reunião escolar
@@ -385,12 +382,9 @@ export default function StepTwoForm() {
             }}
             required
           >
-            <option value={inputRemoteClassroom}>
-              {" "}
-              {inputRemoteClassroom}
-            </option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
+            <option value={inputRemoteClassroom}>{inputRemoteClassroom}</option>
+            <option value="sim">Sim</option>
+            <option value="não">Não</option>
           </Form.Select>
 
         </Form.Group>
@@ -406,10 +400,7 @@ export default function StepTwoForm() {
             onChange={(e) => setInputOpenHoursSaturday(e.target.value)}
             required
           >
-            <option value={inputOpenHoursSaturday}>
-              {" "}
-              {inputOpenHoursSaturday}
-            </option>
+            <option value={inputOpenHoursSaturday}> {inputOpenHoursSaturday}</option>
             <option value="Sim">Sim</option>
             <option value="Não">Não</option>
           </Form.Select>
