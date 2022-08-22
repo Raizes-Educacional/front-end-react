@@ -29,54 +29,75 @@ export default function StepTwoForm() {
   const [inputOpenHoursSaturday, setInputOpenHoursSaturday] = useState("");
 
   useEffect(() => {
+    /*=================================================================
+    Let's get the values ​​of the student property of the context if it has a 
+    length > 1 and assign it to the hook state of each input
+
+    I'm doing this so I don't pass the value of the input with the context,
+    so the user can't delete or typee
+    ==================================================================*/
+    if(student.name.length > 0) setInputName(student.name);
+    
+    if(student.email.length > 0 ) setInputEmail(student.email);
+
+    if(student.age.length > 0) setInputAge(student.age.length);
+
+    if(student.phone.length > 0) setInputPhone(student.phone);
+
+    if(student.cep.length > 0) setInputCep(student.cep);
+    
+    if(student.address.length > 0) setInputAddress(student.address);
+
+    if(student.city.length > 0) setInputCity(student.city);
+
+    if(student.district.length > 0) setInputDistrict(student.district);
+
+    if(student.complement.length > 0) setInputComplement(student.complement);
+
+    if(student.shool.length > 0) setInputShool(student.shool);
+
+    if(student.chooseTheSeries.length > 0) setInputChooseTheSeries(student.chooseTheSeries);
+
+    if(student.knowingRaizes.length > 0) setInputKnowingRaizes(student.knowingRaizes);
+ 
+    if(student.remoteClassroom.length > 0) setInputRemoteClassroom(student.remoteClassroom);
+
+    if(student.openHoursSaturday.length > 0) setInputOpenHoursSaturday(student.openHoursSaturda);
+  }, [])
+  useEffect(() => {
     /*===================================================================
         Checks if the user changed the field, if it changed, 
         it will set only the field that changed to the context, 
         thus avoiding touching other properties of the student object
     =====================================================================*/
-    if (inputName.length > 1) {
-      setStudent({ ...student, name: inputName });
-    }
-    if (inputAge.length > 1) {
-      setStudent({ ...student, age: inputAge });
-    }
-    if (inputPhone.length > 1) {
-      setStudent({ ...student, phone: inputPhone });
-    }
-    if (inputEmail.length > 1) {
-      setStudent({ ...student, email: inputEmail });
-    }
-    if (inputCep.length > 1) {
-      setStudent({ ...student, cep: inputCep });
-    }
-    if (inputAddress.length > 1) {
-      setStudent({ ...student, address: inputAddress });
-    }
-    if (inputDistrict.length > 1) {
-      setStudent({ ...student, district: inputDistrict });
-    }
-    if (inputCity.length > 1) {
-      setStudent({ ...student, city: inputCity });
-    }
-    if (inputComplement.length > 1) {
-      setStudent({ ...student, complement: inputComplement });
-    }
-    if (inputShool.length > 1) {
-      setStudent({ ...student, shool: inputShool });
-    }
-    if (inputKnowingRaizes.length > 1) {
-      setStudent({ ...student, knowingRaizes: inputKnowingRaizes });
-    }
-    if (inputRemoteClassroom.length > 1) {
-      setStudent({ ...student, remoteClassroom: inputRemoteClassroom });
-    }
-    if (inputOpenHoursSaturday.length > 1) {
-      setStudent({ ...student, openHoursSaturday: inputOpenHoursSaturday });
-    }
+    if (inputName.length > 1) setStudent({ ...student, name: inputName });
   
-    if (inputChooseTheSeries.length > 1) {
-      setStudent({ ...student, chooseTheSeries: inputChooseTheSeries });
-    }
+    if (inputAge.length > 1) setStudent({ ...student, age: inputAge });
+    
+    if (inputPhone.length > 1) setStudent({ ...student, phone: inputPhone });
+    
+    if (inputEmail.length > 1) setStudent({ ...student, email: inputEmail });
+    
+    if (inputCep.length > 1) setStudent({ ...student, cep: inputCep });
+    
+    if (inputAddress.length > 1) setStudent({ ...student, address: inputAddress });
+    
+    if (inputDistrict.length > 1) setStudent({ ...student, district: inputDistrict });
+    
+    if (inputCity.length > 1) setStudent({ ...student, city: inputCity });
+    
+    if (inputComplement.length > 1) setStudent({ ...student, complement: inputComplement });
+    
+    if (inputShool.length > 1) setStudent({ ...student, shool: inputShool });
+    
+    if (inputKnowingRaizes.length > 1) setStudent({ ...student, knowingRaizes: inputKnowingRaizes });
+    
+    if (inputRemoteClassroom.length > 1) setStudent({ ...student, remoteClassroom: inputRemoteClassroom });
+    
+    if (inputOpenHoursSaturday.length > 1) setStudent({ ...student, openHoursSaturday: inputOpenHoursSaturday });
+    
+    if (inputChooseTheSeries.length > 1) setStudent({ ...student, chooseTheSeries: inputChooseTheSeries });
+    
   }, [
     inputName,
     inputAge,
@@ -108,7 +129,7 @@ export default function StepTwoForm() {
             placeholder="Digite o seu nome completo"
             minLength={10}
             maxLength={50}
-            value={student.name.length < 1 ? inputName : student.name}
+            value={inputName}
             onChange={(e) => setInputName(e.target.value)}
           />
           <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
@@ -127,7 +148,7 @@ export default function StepTwoForm() {
             placeholder="Coloque sua idade"
             maxLength={2}
             minLength={2}
-            value={student.age.length < 1 ? inputAge : student.age}
+            value={inputAge}
             onChange={(e) => setInputAge(ageMaks(e.target.value))}
           />
           <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
@@ -148,7 +169,7 @@ export default function StepTwoForm() {
               required
               minLength="14"
               maxLength="14"
-              value={student.phone.length < 1 ? inputPhone : student.phone}
+              value={inputPhone}
               onChange={(e) => setInputPhone(phoneMaks(e.target.value))}
             />
             <Form.Control.Feedback> bom!</Form.Control.Feedback>
@@ -169,7 +190,7 @@ export default function StepTwoForm() {
             placeholder="Digite o email do aluno"
             maxLength={50}
             onChange={(e) => setInputEmail(e.target.value)}
-            value={student.email.length < 1 ? inputEmail : student.email}
+            value={inputEmail}
           />
           <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
@@ -189,7 +210,7 @@ export default function StepTwoForm() {
             required
             minLength="9"
             maxLength="9"
-            value={student.cep.length < 1 ? inputCep : student.cep}
+            value={inputCep}
             onChange={(e) => {
               setInputCep(cepMask(e.target.value));
             }}
@@ -210,7 +231,7 @@ export default function StepTwoForm() {
             required
             minLength={5}
             maxLength={70}
-            value={student.address.length < 1 ? inputAddress : student.address}
+            value={inputAddress}
             onChange={(e) => setInputAddress(e.target.value)}
           />
           <Form.Control.Feedback type="invalid">
@@ -229,9 +250,7 @@ export default function StepTwoForm() {
             required
             minLength={5}
             maxLength={70}
-            value={
-              student.district.length < 1 ? inputDistrict : student.district
-            }
+            value={inputDistrict}
             onChange={(e) => setInputDistrict(e.target.value)}
           />
           <Form.Control.Feedback type="invalid">
@@ -251,7 +270,7 @@ export default function StepTwoForm() {
             maxLength={20}
             minLength={3}
             onChange={(e) => setInputCity(e.target.value)}
-            value={student.city.length < 1 ? inputCity : student.city}
+            value={inputCity}
           />
           <Form.Control.Feedback type="invalid">
             Por favor, prencha essa campo
@@ -270,11 +289,7 @@ export default function StepTwoForm() {
             required
             maxLength={20}
             onChange={(e) => setInputComplement(e.target.value)}
-            value={
-              student.complement.length < 1
-                ? inputComplement
-                : student.complement
-            }
+            value={inputComplement}
           />
           <Form.Control.Feedback type="invalid">
             Por favor, prencha essa campo
@@ -292,7 +307,7 @@ export default function StepTwoForm() {
             minLength={10}
             maxLength={50}
             onChange={(e) => setInputShool(e.target.value)}
-            value={student.shool.length < 1 ? inputShool : student.shool}
+            value={inputShool}
           />
           <Form.Control.Feedback type="invalid">
             Por favor, prencha esse campo
@@ -312,11 +327,9 @@ export default function StepTwoForm() {
             }}
             required
           >
-            <option value={student.chooseTheSeries}>
+            <option value={inputChooseTheSeries}>
               {" "}
-              {student.chooseTheSeries.length < 1
-                ? "selecione uma opção"
-                : student.chooseTheSeries}
+              {inputChooseTheSeries}
             </option>
             <option value="5°ano">5°ano</option>
             <option value="6°ano">6°ano</option>
@@ -337,11 +350,9 @@ export default function StepTwoForm() {
             onChange={(e) => setInputKnowingRaizes(e.target.value)}
             required
           >
-            <option value={student.knowingRaizes}>
+            <option value={inputKnowingRaizes}>
               {" "}
-              {student.knowingRaizes.length < 1
-                ? "selecione uma opção"
-                : student.knowingRaizes}
+              {inputKnowingRaizes}
             </option>
             <option value="Grupo de Whatsapp">Grupo de Whatsapp</option>
             <option value="Divulgação em reunião escolar">
@@ -374,11 +385,9 @@ export default function StepTwoForm() {
             }}
             required
           >
-            <option value={student.remoteClassroom}>
+            <option value={inputRemoteClassroom}>
               {" "}
-              {student.remoteClassroom.length < 1
-                ? "selecione uma opção"
-                : student.remoteClassroom}
+              {inputRemoteClassroom}
             </option>
             <option value="Sim">Sim</option>
             <option value="Não">Não</option>
@@ -397,11 +406,9 @@ export default function StepTwoForm() {
             onChange={(e) => setInputOpenHoursSaturday(e.target.value)}
             required
           >
-            <option value={student.openHoursSaturday}>
+            <option value={inputOpenHoursSaturday}>
               {" "}
-              {student.openHoursSaturday.length < 1
-                ? "selecione uma opção"
-                : student.openHoursSaturday}
+              {inputOpenHoursSaturday}
             </option>
             <option value="Sim">Sim</option>
             <option value="Não">Não</option>

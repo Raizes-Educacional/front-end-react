@@ -10,38 +10,44 @@ import { ResponsibleContext } from "../../../store/provider/FormEmrollment/respo
 import * as S from "./styled";
 
 export default function StepThreeForm() {
-  const { responsible, setResponsible} = useContext(ResponsibleContext)
+  const { responsible, setResponsible} = useContext(ResponsibleContext);
   const [inputRg, setInputRg] = useState('');
   const [inputName, setInputName] = useState('');
   const [inputFileRg, setInputFileRg] = useState('');
   const [inputNumberPhone, setInputNumberPhone] = useState('');
   const [inputEmail, setInputEmail] = useState('');
-  const [inputResponsibilityStudentEtec, setInputResponsibilityStudentEtec] =
-    useState('');
-  const [inputResponsiblePathStudentEtec, setInputResponsiblePathStudentEtec] =
-    useState('');
-    
+  const [inputResponsibilityStudentEtec, setInputResponsibilityStudentEtec] = useState('');
+  const [inputResponsiblePathStudentEtec, setInputResponsiblePathStudentEtec] = useState('');
+
+  useEffect(() => {
+    if(responsible.name.length > 0) setInputName(responsible.name);
+    if(responsible.rgNumber.length > 0) setInputRg(responsible.rgNumber);
+    if(responsible.fileRg.length > 0) setInputFileRg(responsible.fileRg);
+    if(responsible.phoneNumber.length > 0) setInputNumberPhone(responsible.phoneNumber);
+    if(responsible.email.length > 0) setInputEmail(responsible.email);
+    if(responsible.responsibilityStudentEtec.length > 0) setInputResponsibilityStudentEtec(responsible.responsibilityStudentEtec);
+    if(responsible.ResponsiblePathStudentEtec.length > 0) setInputResponsiblePathStudentEtec(responsible.ResponsiblePathStudentEtec);
+  }, [])   
+ 
+ 
+ 
+ 
   useEffect(()=> {
-      if(inputName.length > 1){
-        setResponsible({...responsible, name: inputName})
-      }
-      if(inputRg.length > 1){
-        setResponsible({...responsible, rgNumber: inputRg})
-      }
-      if(inputFileRg.length > 1){
-        setResponsible({...responsible, fileRg: inputFileRg})
-      }
-      if(inputNumberPhone.length > 1){
-        setResponsible({...responsible, phoneNumber: inputNumberPhone})
-      }
-      if(inputEmail.length > 1){
-        setResponsible({...responsible, email: inputEmail})
-      }
-      if(inputResponsibilityStudentEtec.length > 1){
-        setResponsible({...responsible, responsibilityStudentEtec: inputResponsibilityStudentEtec})
-      }if(inputResponsiblePathStudentEtec.length > 1){
-        setResponsible({...responsible, ResponsiblePathStudentEtec: inputResponsiblePathStudentEtec })
-      }
+
+      if(inputName.length > 1) setResponsible({...responsible, name: inputName})
+
+      if(inputRg.length > 1) setResponsible({...responsible, rgNumber: inputRg})
+      
+      if(inputFileRg.length > 1)setResponsible({...responsible, fileRg: inputFileRg})
+      
+      if(inputNumberPhone.length > 1)setResponsible({...responsible, phoneNumber: inputNumberPhone})
+      
+      if(inputEmail.length > 1)setResponsible({...responsible, email: inputEmail})
+      
+      if(inputResponsibilityStudentEtec.length > 1)setResponsible({...responsible, responsibilityStudentEtec: inputResponsibilityStudentEtec})
+      
+      if(inputResponsiblePathStudentEtec.length > 1)setResponsible({...responsible, ResponsiblePathStudentEtec: inputResponsiblePathStudentEtec })
+      
 
   }, [inputName, inputRg, inputNumberPhone, inputFileRg, inputNumberPhone, inputEmail,
     inputResponsibilityStudentEtec, inputResponsiblePathStudentEtec])
@@ -58,7 +64,7 @@ export default function StepThreeForm() {
             type="text"
             placeholder="Digite o nome do responsável"
             onChange={(e) => setInputName(e.target.value)}
-            value={responsible.name.length < 1 ? inputName : responsible.name  }
+            value={inputName}
             maxLength={50}
             minLength={5}
           />
@@ -76,7 +82,7 @@ export default function StepThreeForm() {
             type="text"
             placeholder="Digite o seu número de rg"
             onChange={(e) => setInputRg(rgMaks(e.target.value))}
-            value={responsible.rgNumber.length < 1 ? inputRg : responsible.rgNumber  }
+            value={inputRg}
 
             maxLength={12}
             minLength={12}
@@ -113,7 +119,7 @@ export default function StepThreeForm() {
             type="text"
             placeholder="Digite o número do celular do responsável"
             onChange={(e) => setInputNumberPhone(phoneMaks(e.target.value))}
-            value={responsible.phoneNumber.length < 1 ? inputNumberPhone : responsible.phoneNumber }
+            value={ inputNumberPhone  }
 
             maxLength={14}
             minLength={14}
@@ -133,7 +139,7 @@ export default function StepThreeForm() {
             placeholder="Digite o email do aluno"
             maxLength={50}
             onChange={(e) => setInputEmail(e.target.value)}
-            value={responsible.email.length === 0 ? inputEmail : responsible.email }
+            value={inputEmail}
 
           />
           <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
@@ -157,7 +163,7 @@ export default function StepThreeForm() {
             }}
             required
           >
-            <option value={responsible.responsibilityStudentEtec}>{responsible.responsibilityStudentEtec}</option>
+            <option value={inputResponsibilityStudentEtec}>{inputResponsibilityStudentEtec}</option>
             <option value="true">Sim</option>
             <option value="false">Não</option>
           </Form.Select>
@@ -175,7 +181,7 @@ export default function StepThreeForm() {
             }}
             required
           >
-            <option value={responsible.ResponsiblePathStudentEtec}>{responsible.ResponsiblePathStudentEtec}</option>
+            <option value={inputResponsiblePathStudentEtec}>{inputResponsiblePathStudentEtec}</option>
             <option value="sim">Sim</option>
             <option value="não">Não</option>
           </Form.Select>
