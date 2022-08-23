@@ -6,9 +6,13 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Form } from "react-bootstrap";
 // componentes
-import RenderStep  from './RenderStep'// style
+import RenderStep  from './RenderStep'
+// style
 import { useStyles } from "./styled";
 import * as S from "./styled";
+//Img
+import Logotipo from '../../assets/logotipo.png'
+
 
 const getSteps = () => ["Início", "Aluno", "Responsável"];
 
@@ -55,6 +59,10 @@ function FormEnrollmentComponents() {
   };
   return (
     <div className={classes.root}>
+      <S.Container>
+        <img src={Logotipo} alt="logotipo" width={300}></img>
+        <h1> Formulário de matrículo do aluno</h1>
+      </S.Container>
       <Stepper activeStep={activeStep}>
         {steps.map((label, index) => {
           const stepProps = {};
@@ -71,7 +79,12 @@ function FormEnrollmentComponents() {
         })}
       </Stepper>
       <div>
-          
+        {activeStep > 2 ? (
+          <div>        
+            <h1> Usuario cadastado</h1>
+          </div>
+        ): (
+
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <RenderStep step={activeStep} FormIsValid={formIsValid} />
           <S.WrapeerCenter>
@@ -94,6 +107,7 @@ function FormEnrollmentComponents() {
             </Button>
           </S.WrapeerCenter>
         </Form>
+        )}
       </div>
     </div>
   );
