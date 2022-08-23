@@ -124,7 +124,7 @@ export default function StepTwoForm() {
         {/*========================================================
                      NAME
         ===========================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom001">
+        <Form.Group as={Col} md="6" controlId="validationCustom001">
           <Form.Label>Nome do Aluno </Form.Label>
           <Form.Control
             required
@@ -143,7 +143,7 @@ export default function StepTwoForm() {
         {/*==========================================================
                             AGE         
         =============================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom002">
+        <Form.Group as={Col} md="6" controlId="validationCustom002">
           <Form.Label>Idade</Form.Label>
           <Form.Control
             required
@@ -159,10 +159,12 @@ export default function StepTwoForm() {
             Por favor, Coloque sua idade
           </Form.Control.Feedback>
         </Form.Group>
+      </Row>
+      <Row className="mb-3">
         {/*================================================================
                             PHONE
          =================================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustomUsername003">
+        <Form.Group as={Col} md="6" controlId="validationCustomUsername003">
           <Form.Label>Número do celular do Aluno</Form.Label>
           <InputGroup hasValidation>
             <Form.Control
@@ -185,7 +187,7 @@ export default function StepTwoForm() {
         {/*========================================================================
                                   email
         ============================================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom004">
+        <Form.Group as={Col} md="6" controlId="validationCustom004">
           <Form.Label>E-mail do Aluno</Form.Label>
           <Form.Control
             required
@@ -205,7 +207,7 @@ export default function StepTwoForm() {
         {/*===============================================================
                                     CEP
         ==================================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom005">
+        <Form.Group as={Col} md="6" controlId="validationCustom005">
           <Form.Label>Cep</Form.Label>
           <Form.Control
             type="text"
@@ -226,7 +228,7 @@ export default function StepTwoForm() {
         {/*===============================================================
                                     ADDRESS
         ==================================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom006">
+        <Form.Group as={Col} md="6" controlId="validationCustom006">
           <Form.Label>Endereço</Form.Label>
           <Form.Control
             type="text"
@@ -242,10 +244,12 @@ export default function StepTwoForm() {
           </Form.Control.Feedback>
           <Form.Control.Feedback> Parece bom!</Form.Control.Feedback>
         </Form.Group>
+      </Row>
+      <Row className="mb-3">
         {/*==================================================================
                                 DISTRICT
           ===============================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom007">
+        <Form.Group as={Col} md="6" controlId="validationCustom007">
           <Form.Label>Bairro</Form.Label>
           <Form.Control
             type="text"
@@ -264,7 +268,7 @@ export default function StepTwoForm() {
         {/*===============================================================
                                     CITY
         ==================================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom008">
+        <Form.Group as={Col} md="6" controlId="validationCustom008">
           <Form.Label>Cidade</Form.Label>
           <Form.Control
             type="text"
@@ -283,8 +287,8 @@ export default function StepTwoForm() {
       <Row className="mb-3">
         {/*===================================================================
                           COMPLEMENT
-      =======================================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom009">
+        =======================================================================*/}
+        <Form.Group as={Col} md="6" controlId="validationCustom009">
           <Form.Label>Complemento</Form.Label>
           <Form.Control
             type="text"
@@ -300,8 +304,8 @@ export default function StepTwoForm() {
         </Form.Group>
         {/*===================================================================
                           SCHOLL
-      =======================================================================*/}
-        <Form.Group as={Col} md="3" controlId="validationCustom010">
+        =======================================================================*/}
+        <Form.Group as={Col} md="6" controlId="validationCustom010">
           <Form.Label>Escola</Form.Label>
           <Form.Control
             type="text"
@@ -316,6 +320,8 @@ export default function StepTwoForm() {
             Por favor, prencha esse campo
           </Form.Control.Feedback>
         </Form.Group>
+      </Row>
+      <Row className="mb-3">
         {/*===================================================================
                           ChooseTheSeries
         =======================================================================*/}
@@ -338,8 +344,7 @@ export default function StepTwoForm() {
             <option value="9°ano">9°ano</option>
           </Form.Select>
         </Form.Group>
-      </Row>
-      <Row className="mb-3">
+  
         {/*===================================================================
                           InputKnowingRaizes
         =======================================================================*/}
@@ -367,6 +372,8 @@ export default function StepTwoForm() {
             <option value="Outro">Outro</option>
           </Form.Select>
         </Form.Group>
+      </Row>
+      <Row className="mb-3">
         {/*===================================================================
                           inputRemoteClassroom
         =======================================================================*/}
@@ -391,7 +398,7 @@ export default function StepTwoForm() {
         {/*===================================================================
                          Open HoursSaturday
         =======================================================================*/}
-        <Form.Group as={Col} md="13" controlId="validationCustom014">
+        <Form.Group as={Col} md="6" controlId="validationCustom014">
           <Form.Label>
             O aluno terá horário livre aos sábados das 08 horas às 13 horas?
           </Form.Label>
