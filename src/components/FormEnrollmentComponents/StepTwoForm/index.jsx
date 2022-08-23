@@ -27,6 +27,9 @@ export default function StepTwoForm() {
   const [inputKnowingRaizes, setInputKnowingRaizes] = useState("");
   const [inputRemoteClassroom, setInputRemoteClassroom] = useState("");
   const [inputOpenHoursSaturday, setInputOpenHoursSaturday] = useState("");
+  const [inputHouseNumber, setInputHouseNumber ] = useState("");
+  const [inputAnySpecialNeeds, setInputAnySpecialNeeds] = useState("");
+  const [inputWhatSpecialNeed, setInputWhatSpecialNeed] = useState("");
 
   useEffect(() => {
     /*=================================================================
@@ -48,6 +51,8 @@ export default function StepTwoForm() {
     
     if(student.address.length > 0) setInputAddress(student.address);
 
+    if(student.houseNumber.length > 0) setInputHouseNumber(student.houseNumber);
+
     if(student.city.length > 0) setInputCity(student.city);
 
     if(student.district.length > 0) setInputDistrict(student.district);
@@ -63,6 +68,10 @@ export default function StepTwoForm() {
     if(student.remoteClassroom.length > 0) setInputRemoteClassroom(student.remoteClassroom);
 
     if(student.openHoursSaturday.length > 0) setInputOpenHoursSaturday(student.openHoursSaturday);
+
+    if(student.anySpecialNeeds.length > 0 ) setInputAnySpecialNeeds(student.anySpecialNeeds);
+
+    if(student.whatSpecialNeed.length > 0) setInputWhatSpecialNeed(student.whatSpecialNeed);
   }, [])
 /*  useEffect(() => {
     /*===================================================================
@@ -118,6 +127,17 @@ export default function StepTwoForm() {
   useEffect(() => {
     setStudent({ ...student, openHoursSaturday: inputOpenHoursSaturday });
   }, [inputOpenHoursSaturday])
+  useEffect(() => {
+    setStudent({...student, houseNumber: inputHouseNumber })
+  }, [inputHouseNumber])
+  useEffect(() => {
+    setStudent({...student, anySpecialNeeds: inputAnySpecialNeeds })
+  }, [inputAnySpecialNeeds])
+  useEffect(() => {
+    setStudent({...student, whatSpecialNeed: inputWhatSpecialNeed })
+  }, [inputWhatSpecialNeed])
+    
+  
   return (
     <S.Container>
       <Row className="mb-3">
@@ -159,6 +179,41 @@ export default function StepTwoForm() {
             Por favor, Coloque sua idade
           </Form.Control.Feedback>
         </Form.Group>
+      </Row>
+      <Row className="mb-3">
+        {/*======================================================================================
+                                          any special needs
+        ======================================================================================*/}
+        <Form.Group as={Col} md="13" controlId="validationCustom011">
+            <Form.Label>
+              O aluno possui alguma necessidade especial?
+            </Form.Label>
+            <Form.Select
+              aria-label="Default select example"
+              onChange={(e) => {
+                setInputAnySpecialNeeds(e.target.value);
+              }}
+              required
+            >
+              <option value={inputAnySpecialNeeds}>{inputAnySpecialNeeds.length < 1 ? 'selecione uma opção': inputAnySpecialNeeds}</option>
+              <option value="sim">sim</option>
+              <option value="não">não</option>
+             
+            </Form.Select>
+        </Form.Group>
+        {inputAnySpecialNeeds === 'sim' ? (
+          <Form.Group as={Col} md="12" controlId="validationCustom002">
+            <Form.Label>Qual</Form.Label>
+            <Form.Control
+              required
+              type="string"
+              placeholder="Escreva essa necessidaade"
+              value={inputWhatSpecialNeed}
+              onChange={(e) => setInputWhatSpecialNeed(e.target.value)}
+            />
+          </Form.Group>
+
+        ): null }
       </Row>
       <Row className="mb-3">
         {/*================================================================
@@ -228,7 +283,7 @@ export default function StepTwoForm() {
         {/*===============================================================
                                     ADDRESS
         ==================================================================*/}
-        <Form.Group as={Col} md="6" controlId="validationCustom006">
+        <Form.Group as={Col} md="4" controlId="validationCustom006">
           <Form.Label>Endereço</Form.Label>
           <Form.Control
             type="text"
@@ -243,6 +298,19 @@ export default function StepTwoForm() {
             Por favor, coloque seu endereço.
           </Form.Control.Feedback>
           <Form.Control.Feedback> Parece bom!</Form.Control.Feedback>
+        </Form.Group>
+        {/*=======================================================================
+                                  House Number
+      ===========================================================================*/}
+        <Form.Group as={Col} md="2" controlId="validationCustom006">
+          <Form.Label>Número</Form.Label>
+          <Form.Control
+            type="text"
+            required
+            maxLength={10}
+            value={inputHouseNumber}
+            onChange={(e) => setInputHouseNumber(ageMaks(e.target.value))}
+          />
         </Form.Group>
       </Row>
       <Row className="mb-3">
