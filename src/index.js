@@ -7,6 +7,7 @@ import Global from "./styles/global";
 import { AuthProvider } from "./store/provider/AuthContext";
 import { StudentProvider } from "./store/provider/FormEmrollment/studentContext";
 import { ResposibleProvider } from "./store/provider/FormEmrollment/responsible";
+import { ButtonIsDesableProvider } from "./store/provider/FormEmrollment/buttonContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,9 @@ root.render(
     <ResposibleProvider>
       <StudentProvider>
         <AuthProvider>
-          <App />
+          <ButtonIsDesableProvider>
+            <App />
+          </ButtonIsDesableProvider>
         </AuthProvider>
       </StudentProvider>
     </ResposibleProvider>
