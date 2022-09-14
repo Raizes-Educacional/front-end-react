@@ -8,12 +8,12 @@ O objetivo do sistema é automatizar as rotinas de backoffice, a fim de canaliza
 
 ### Funcionalidades
 
-* Cadastro de Voluntários
-* Emissão de Certificados de Horas Complementares e envio por e-mail (uma singela recompensa pelos serviços prestados pelos nossos voluntários)
-* Lembrete de aniversários (alunos e voluntários)
-* Formulários e gestão de matrícula
-* Geração de grades de aulas (gastamos boa parte do nosso tempo conciliando disponibilidades)
-* Controle de frequência
-* Avaliação
-* Geração de CSVs para popular o nosso Moodle
-* Simulados de provas
+* Cadastro de Voluntários;
+* Emissão de Certificados de Horas Complementares (uma singela recompensa pelos serviços prestados pelos voluntários);
+* Envios de e-mails de aniversário;
+* Formulários e gestão de matrícula;
+* Geração de grades de aulas (gastamos boa parte do nosso tempo conciliando disponibilidades);
+* Controle de frequência;
+* Avaliação;
+* Geração de CSVs para popular o nosso Moodle;
+* Simulados de provas;
