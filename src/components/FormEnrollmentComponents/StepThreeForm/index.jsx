@@ -51,6 +51,18 @@ export default function StepThreeForm() {
 
   }, [inputName, inputRg, inputNumberPhone, inputFileRg, inputNumberPhone, inputEmail,
     inputResponsibilityStudentEtec, inputResponsiblePathStudentEtec])
+
+  const convertFileInBase64 = ( e) => {
+    const file = e.target.files[0];
+    const render = new FileReader();
+    render.addEventListener('load',async () => {
+      await setInputFileRg(render.result);
+      console.log('sss' + inputFileRg);
+    }, false)
+    if(file){
+      render.readAsDataURL(file)
+    }
+  }
   return (
     <S.Container>
       <Row className="mb-3">
@@ -101,7 +113,7 @@ export default function StepThreeForm() {
           <Form.Control
             required
             type="file"
-            onChange={(e) => setInputFileRg(e.target.value)}
+            onChange={(e) => convertFileInBase64(e)}
           />
           <Form.Control.Feedback type="invalid">
             Campo obrigatório
