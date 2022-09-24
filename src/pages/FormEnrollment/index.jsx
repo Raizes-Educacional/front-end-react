@@ -9,7 +9,10 @@ import * as S from './styled';
 function FormEnrollment(){
     return(
         <S.Wrapper>
-            <FormEnrollmentComp />
+            <S.WrapperChild>
+
+                <FormEnrollmentComp />
+            </S.WrapperChild>
         </S.Wrapper>
     )
 }
