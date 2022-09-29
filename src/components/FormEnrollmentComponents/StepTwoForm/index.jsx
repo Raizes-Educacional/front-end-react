@@ -8,11 +8,13 @@ import { ageMaks } from "../../Maks/ageMaks";
 import { StudentContext } from "../../../store/provider/FormEmrollment/studentContext";
 //Styled component
 import * as S from "./styled";
+import { ResponsibleContext } from '../../../store/provider/FormEmrollment/responsible';
 export default function StepTwoForm() {
-  const { student, setStudent } = useContext(StudentContext);
   /*=======================================================================
                           HOOKS GET FORM VALUES 
   ========================================================================*/
+  const {student, setStudent} = useContext(StudentContext)
+  const {responsible, setResponsible} = useContext(ResponsibleContext)
   const [inputName, setInputName] = useState("");
   const [inputAge, setInputAge] = useState("");
   const [inputPhone, setInputPhone] = useState("");

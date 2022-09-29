@@ -79,11 +79,7 @@ function FormEnrollmentComponents() {
         })}
       </Stepper>
       <div>
-        {activeStep > 2 ? (
-          <div>        
-            <h1> Usuario cadastado</h1>
-          </div>
-        ): (
+        
 
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <RenderStep step={activeStep} FormIsValid={formIsValid} />
@@ -107,7 +103,6 @@ function FormEnrollmentComponents() {
             </Button>
           </S.WrapeerCenter>
         </Form>
-        )}
       </div>
     </div>
   );
