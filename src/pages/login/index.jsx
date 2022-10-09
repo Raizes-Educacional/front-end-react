@@ -16,7 +16,8 @@ import logotipo from "../../assets/logotipo.png";
 // Authetication 
 import { AuthContext } from "../../store/provider/AuthContext";
 
-
+//Service
+import { LoginServices } from "../../services/login/login.service";
 export default function Login() {
   const { user, setUser } = useContext(AuthContext)
   const [validated, setValidated] = useState(false);
@@ -30,46 +31,19 @@ export default function Login() {
   //     and stores the user token
   //     redirecting the page
   //===================================================================
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     setValidated(true);
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
 
-    if (form.checkValidity() === true) {
-      const myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-
-      const raw = JSON.stringify({
-        email,
-        password
-      });
-
-      const requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: raw,
-        redirect: "follow",
-      };
-
-      fetch("http://localhost:3000/voluntario/login", requestOptions)
-        .then((response) => response.json())
-        .then( async (result) => {
-          if(result.statusCode === 200){
-            // set result to context and localhost
-            await window.localStorage.setItem('acess-token', result);
-            await setUser(result);
-            return setUserOk(true);
-          }
-          setValidPassword(true)
-          return console.log("Erro "+ result.mensage)
-        })
-        .catch((error) => {
-          setValidPassword(true);
-          console.log("error", error)
-        });
+    if (form.checkValidity() === true) {  
+      const {data, status} = await LoginServices.postLogin(email, password)
+      if(status == 200){
+        setUser({userToken: data.token})
+        setUserOk(true)
+      }
     }
-
   };
   // Chech if user login
   if(userok === true){
