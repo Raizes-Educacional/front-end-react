@@ -166,15 +166,14 @@ export default function StepTwoForm() {
                             AGE         
         =============================================================*/}
         <Form.Group as={Col} md="6" controlId="validationCustom002">
-          <Form.Label>Idade</Form.Label>
+          <Form.Label>Data de nascimento</Form.Label>
           <Form.Control
             required
-            type="string"
-            placeholder="Coloque sua idade"
+            type="date"
             maxLength={2}
             minLength={2}
             value={inputAge}
-            onChange={(e) => setInputAge(ageMaks(e.target.value))}
+            onChange={(e) => setInputAge(e.target.value)}
           />
           <Form.Control.Feedback>Parece bom!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
@@ -198,12 +197,12 @@ export default function StepTwoForm() {
               required
             >
               <option value={inputAnySpecialNeeds}>{inputAnySpecialNeeds.length < 1 ? 'selecione uma opção': inputAnySpecialNeeds}</option>
-              <option value="sim">sim</option>
-              <option value="não">não</option>
+              <option value="true">sim</option>
+              <option value="false">não</option>
              
             </Form.Select>
         </Form.Group>
-        {inputAnySpecialNeeds === 'sim' ? (
+        {inputAnySpecialNeeds === 'true' ? (
           <Form.Group as={Col} md="12" controlId="validationCustom002">
             <Form.Label>Qual</Form.Label>
             <Form.Control
@@ -460,8 +459,8 @@ export default function StepTwoForm() {
             required
           >
             <option value={inputRemoteClassroom}>{inputRemoteClassroom}</option>
-            <option value="sim">Sim</option>
-            <option value="não">Não</option>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
           </Form.Select>
 
         </Form.Group>
@@ -478,8 +477,8 @@ export default function StepTwoForm() {
             required
           >
             <option value={inputOpenHoursSaturday}> {inputOpenHoursSaturday}</option>
-            <option value="Sim">Sim</option>
-            <option value="Não">Não</option>
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
           </Form.Select>
 
           <Form.Control.Feedback type="invalid">

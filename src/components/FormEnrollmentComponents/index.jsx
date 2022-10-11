@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
@@ -6,25 +6,23 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Form } from "react-bootstrap";
 // componentes
-import RenderStep  from './RenderStep'
+import RenderStep from "./RenderStep";
+import ModalComponent from "../modal/index";
 // style
 import { useStyles } from "./styled";
 import * as S from "./styled";
 //Img
-import Logotipo from '../../assets/logotipo.png'
-
+import Logotipo from "../../assets/logotipo.png";
 
 const getSteps = () => ["Início", "Aluno", "Responsável"];
-
-
 
 function FormEnrollmentComponents() {
   const classes = useStyles();
   const [validated, setValidated] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
-  const [isButtonTrue, setIsButtonTrue ] = useState(false);
-  const [formIsValid, setFormIsValid] = useState(false)
+  const [isButtonTrue, setIsButtonTrue] = useState(false);
+  const [formIsValid, setFormIsValid] = useState(false);
   const steps = getSteps();
 
   const isStepSkipped = (step) => {
@@ -45,18 +43,43 @@ function FormEnrollmentComponents() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
- 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
     if (form.checkValidity() === true) {
-        setFormIsValid(true)
-        handleNext()
+      setFormIsValid(true);
+      handleNext();
     }
 
     setValidated(true);
   };
+  const LogicRenderButton = () => {
+    if (activeStep > steps.length - 1) {
+      return <ModalComponent />;
+    } else {
+      return (
+        <div>
+          <Button
+            disabled={activeStep === 0}
+            onClick={handleBack}
+            className={classes.button}
+          >
+            Voltar
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className={classes.button}
+          >
+            {activeStep === steps.length - 1 ? "Cadastrar" : "Continuar"}
+          </Button>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className={classes.root}>
       <S.Container>
@@ -79,29 +102,9 @@ function FormEnrollmentComponents() {
         })}
       </Stepper>
       <div>
-        
-
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <RenderStep step={activeStep} FormIsValid={formIsValid} />
-          <S.WrapeerCenter>
-            <Button
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              className={classes.button}
-            >
-              Voltar
-            </Button>
-
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              className={classes.button}
-              
-            >
-              {activeStep === steps.length - 1 ? "Cadastrar" : "Continuar"}
-            </Button>
-          </S.WrapeerCenter>
+          <S.WrapeerCenter>{LogicRenderButton()}</S.WrapeerCenter>
         </Form>
       </div>
     </div>
