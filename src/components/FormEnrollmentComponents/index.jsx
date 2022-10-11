@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
@@ -13,16 +13,19 @@ import { useStyles } from "./styled";
 import * as S from "./styled";
 //Img
 import Logotipo from "../../assets/logotipo.png";
-
+//CONTEXT
+import { ResponsibleContext } from "../../store/provider/FormEmrollment/responsible";
 const getSteps = () => ["Início", "Aluno", "Responsável"];
 
 function FormEnrollmentComponents() {
   const classes = useStyles();
+  const {responsible, setResponsible} = useContext(ResponsibleContext)
   const [validated, setValidated] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
   const [isButtonTrue, setIsButtonTrue] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
+  const ga = false
   const steps = getSteps();
 
   const isStepSkipped = (step) => {
@@ -79,7 +82,7 @@ function FormEnrollmentComponents() {
       );
     }
   };
-
+  
   return (
     <div className={classes.root}>
       <S.Container>

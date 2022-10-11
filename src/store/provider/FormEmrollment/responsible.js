@@ -8,7 +8,8 @@ export const ResponsibleContext = React.createContext({
     phoneNumber: '',
     email: '',
     responsibilityStudentEtec: '',
-    ResponsiblePathStudentEtec: ''
+    ResponsiblePathStudentEtec: '',
+    confirmRequest: false
 })
 
 
@@ -20,7 +21,9 @@ export const ResposibleProvider = (props) => {
         phoneNumber: '',
         email: '',
         responsibilityStudentEtec: '',
-        ResponsiblePathStudentEtec: ''
+        ResponsiblePathStudentEtec: '',
+        confirmRequest: false
+
     });
     return (
         <ResponsibleContext.Provider value={{responsible, setResponsible}}>
